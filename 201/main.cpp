@@ -1,38 +1,41 @@
-// WORK IN PROGRESS : works right, but timelimit exceeded, need to rewrite in another way
-#include <iostream>
+/*
+Найдите количество решений уравнения
+x1 + 2x2 + 3x3+ 4x4= n,     где n и xi — неотрицательные целые числа.
 
-int total=0;
-int func(int k, int max);
+Вход: одна строка, содержащая число n < 1000.
+Выход: одна строка, содержащая количество решений уравнения
+*/
+#include<iostream>
+using namespace std;
 
-int main(void)
+int main()
 {
-  int N;
-  std::cin>>N;
-  int arr[5]={0,1,2,3,5};
-  if(N<5)
+  int a, b, c, d;
+  int N, am=0;
+  cin>>N;
+  for(a=0; a<=1000; a++)
   {
-    std::cout<<arr[N];
-    return 0;
-  }
-  total += N/4*arr[4]+arr[N%4];
-  total += N/3*arr[3]+arr[N%3];
-  total += N/2*arr[2]+arr[N%2];
-  total += N*arr[1];
-  //func(N, 4);
-  std::cout<<total;
-}
-
-int func(int k, int max)
-{
-  if(k==0||k==1) { total++; return 0; }
-  int j;
-  for(j=max;j>0;j--)
-  {
-    if((k-j)>=0)
+    if(4*a>N)
+      break;
+    for(b=0; b<=1000; b++)
     {
-      //std::cout<<"debug k and j "<<k<<" "<<j<<"\n";
-      func(k-j,j);
+      if((4*a+3*b)>N)
+        break;
+      for(c=0; c<=1000; c++)
+      {
+        if((4*a+3*b+2*c)>N)
+          break;
+        for(d=0; d<=1000; d++)
+        {
+          if((4*a+3*b+2*c+d)==N)
+          {
+            am++;
+            break;
+          }
+        }
+      }
     }
   }
+  cout<<am<<"\n";
   return 0;
 }

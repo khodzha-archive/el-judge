@@ -32,23 +32,15 @@ int main(void)
   {
     if(a%2!=0)
     {
-      k=4;
-      while(true)
+      if((a+1)%4==0 && (a-1)%4!=0)
       {
-        if((a+1)%k==0 && (a-1)%k!=0)
-        {
-          a++;
-          op++;
-          break;
-        }
-        else if((a-1)%k==0 && (a+1)%k!=0)
-        {
-          a--;
-          op++;
-          break;
-        }
-        else if((a-1)%k==0 && (a+1)%k==0)
-          k*=2;
+        a++;
+        op++;
+       }
+      else if((a-1)%4==0 && (a+1)%4!=0)
+      {
+        a--;
+        op++;
       }
     }
     else

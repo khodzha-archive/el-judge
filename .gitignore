@@ -164,3 +164,6 @@ pip-log.txt
 
 # do not include .exe
 *.exe
+
+# do not include main executable
+main
